@@ -1064,7 +1064,7 @@ function detsouxx(id14433){
    clearroute();
    hapusrouteangkot();
    hapusMarkerTerdekat();
-      console.log('aaa');
+      console.log(server+'detik.php?info='+id14433);
       
        $.ajax({ 
       url: server+'detik.php?info='+id14433, data: "", dataType: 'json', success: function(rows)
