@@ -2607,7 +2607,9 @@ hapusawal();
                 $('#hasilcari').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
               }
               var jumlah = rows.length;
-              viewikk(jumlah_sml);
+              if(jumlah_sml != 0){
+	      viewikk(jumlah_sml);
+	      }
               // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>");
       }});
       }else{
@@ -2648,7 +2650,9 @@ hapusawal();
                 $('#hasilcari').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
               }
               var jumlah = rows.length;
-              viewikk(jumlah_sml);
+              if(jumlah_sml != 0){
+	      viewikk(jumlah_sml);
+	      }
               // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>");
       }});
     }
