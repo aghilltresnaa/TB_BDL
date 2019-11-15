@@ -2561,7 +2561,7 @@ hapusawal();
   for(i=0;i<$("input[name=product_souvenir]:checked").length;i++){
     arrayLay.push($("input[name=product_souvenir]:checked")[i].value);
   }
-  var jumlah_centang = $("input[name=product_souvenir]:checked").length + $("input[name=product_small_industry]:checked").length;
+  var jumlah_centang = $("input[name=product_small_industry]:checked").length;
 
   console.log(jumlah_centang, koordinat);
   if (jumlah_centang==0){
@@ -2569,8 +2569,8 @@ hapusawal();
   }else{
     if(arrayLay == ''){
       console.log('baba');
-      var jumlah1 = 0;
-      viewikk(jumlah1);
+      
+      viewikk(jumlah_centang);
 
     } else {
       if(koordinat == 'null'){
@@ -2607,7 +2607,7 @@ hapusawal();
                 $('#hasilcari').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
               }
               var jumlah = rows.length;
-              viewikk(jumlah);
+              viewikk(jumlah_centang);
               // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>");
       }});
       }else{
