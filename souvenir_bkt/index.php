@@ -2614,10 +2614,13 @@ hapusawal();
       }});
       }else{
         console.log("woi");
+        $("#recommendation").show();
+        $('#recommend1').show();
+        $('#detailrekom').empty();
         aktifkanRadiuss3();
         var inputradiuss=document.getElementById("inputradiuss_selsou").value * 100;
         console.log(server+'selectsou_rad.php?lay='+arrayLay+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss);
-        $('#hasilcari').append("<thead><th class='centered'>Name</th><th class='centered' colspan='3'>Action</th></thead>");
+        $('#detailrekom').append("<thead><th class='centered'>Name</th><th class='centered'>Galeri</th><th class='centered' colspan='3'>Action</th></thead>");
       $.ajax({ url: server+'selectsou_rad.php?lay='+arrayLay+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss, data: "", dataType: 'json', success: function(rows){
         
         if(rows==null)
@@ -2632,6 +2635,7 @@ hapusawal();
                 var nama_tempat_kuliner   = row.name;
                 var latitude  = row.latitude ;
                 var longitude = row.longitude ;
+                var foto = row.foto;
                 centerBaru = new google.maps.LatLng(latitude, longitude);
                 marker = new google.maps.Marker
               ({
@@ -2647,9 +2651,9 @@ hapusawal();
                 map.setCenter(centerBaru);
                 map.setZoom(16);
                 clickMarker(centerBaru, id);
-                $('#hasilcari').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
+                $('#detailrekom').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a href='../_foto/"+foto+"'><img style='width:100%' src='../_foto/"+foto+"'></a></td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
               }
-              var jumlah = rows.length;
+	      var jumlah = rows.length;
               if(jumlah_sml != 0){
 	      viewikk(jumlah_sml);
 	      }
@@ -4748,6 +4752,18 @@ aktifkanRadiuss4();
                               <div class="box-body" style="max-height:450px;overflow:auto;">
                                 <div class="form-group" id="hasilcariculi1" style="display:none;">
                                   <table class="table table-bordered" id='hasilcariculi'></table>
+                                </div>
+                              </div>         
+                        </div> 
+		   	<div class="col-lg-12 ds"  id="recommendation" style="display:none;">
+                          <!-- <div class="col-md-12 padding-0" style="display:none;"> -->
+                          <!-- <h3 style="font-size:16px">Rute</h3> -->
+                          <a class="btn btn-compose">Recommendation</a>
+                              <!-- First Action -->
+                              <div class="box-body" style="max-height:557px;overflow:auto;">
+                                <div class="form-group" id="recommend1" >
+
+                                  <table class="table table-bordered" id='detailrekom'></table>
                                 </div>
                               </div>         
                         </div> 
