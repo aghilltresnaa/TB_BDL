@@ -2725,8 +2725,9 @@ function viewikk(jml)
       console.log('dd');
       aktifkanRadiuss3();
       var inputradiuss=document.getElementById("inputradiuss_selsou").value * 100;
-      $.ajax({ url: server+'selectik_rad.php?lay='+arrayLay2+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss, data: "", dataType: 'json', success: function(rows){
       console.log(server+'selectik_rad.php?lay='+arrayLay2+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss);
+      $.ajax({ url: server+'selectik_rad.php?lay='+arrayLay2+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss, data: "", dataType: 'json', success: function(rows){
+      
         if(rows==null && arrayLay2.length != 0)
             {
               alert('Data not found');
@@ -2740,6 +2741,7 @@ function viewikk(jml)
               var nama_tempat_kuliner   = row.name;
               var latitude  = row.latitude ;
               var longitude = row.longitude ;
+              var foto = row.foto;
               centerBaru = new google.maps.LatLng(latitude, longitude);
               marker = new google.maps.Marker
             ({
@@ -2755,11 +2757,8 @@ function viewikk(jml)
               map.setCenter(centerBaru);
               map.setZoom(16);
               clickMarker(centerBaru, id);
-              $('#hasilcari').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a role='button' class='btn btn-success' onclick='detik(\""+id+"\");detikik(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='ikangkot(\""+id+"\")'></a></td></tr>");
+              $('#detailrekom').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a href='../_foto/"+foto+"'><img style='width:100%' src='../_foto/"+foto+"'></a></td><td><a role='button' class='btn btn-success' onclick='detik(\""+id+"\");detikik(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='ikangkot(\""+id+"\")'></a></td></tr>");
             }
-            // jml = jml + rows.length;
-            // alert('hai')
-            // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+jml);
     }});
     }
   }
