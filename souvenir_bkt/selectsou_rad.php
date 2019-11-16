@@ -27,10 +27,13 @@ souvenir.id,
 			   )
 			 ) AS jarak,
 souvenir.name,
+souvenir_gallery.gallery_souvenir as sou_gallery,
 ST_X(ST_CENTROID(souvenir.geom)) AS lng,
 ST_Y(ST_CENTROID(souvenir.geom)) AS lat
 FROM
 souvenir
+JOIN
+souvenir_gallery ON souvenir.id = souvenir_gallery.id
 	JOIN
 detail_product_souvenir ON souvenir.id = detail_product_souvenir.id_souvenir
 WHERE
@@ -47,8 +50,14 @@ while($row = mysqli_fetch_array($hasil))
 		//$name=$row['name'];
 		$longitude=$row['lng'];
 		$latitude=$row['lat'];
+		if(($row['sou_gallery']=='-')||($row['sou_gallery']=='')){
+			$foto="foto.jpg";
+		  }
+		  else{
+			$foto=$row['sou_gallery'];
+		  }
 
-		$dataarray[]=array('id'=>$id,'name'=>$name,'longitude'=>$longitude,'latitude'=>$latitude);
+		$dataarray[]=array('id'=>$id,'name'=>$name,'longitude'=>$longitude,'latitude'=>$latitude,'foto'=>$foto);
 	}
 echo json_encode ($dataarray);
 ?>
