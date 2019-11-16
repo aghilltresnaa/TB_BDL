@@ -4200,13 +4200,13 @@ aktifkanRadiuss4();
                      </ul>
                     </li>
 
-                    <li class="sub-menu">
+<!--                     <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-unlock"></i>
                         <span>Active</span>
                       </a>
                       <ul class="sub">
-                        <div class=" form-group"> <br>
+                        <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
                           <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatuses">
                             <option value="">-Choose-</option>
