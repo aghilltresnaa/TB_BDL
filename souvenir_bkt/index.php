@@ -4200,15 +4200,15 @@ aktifkanRadiuss4();
                      </ul>
                     </li>
 
-                     <li class="sub-menu">
+<!--                      <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-unlock"></i>
                         <span>Active</span>
                       </a>
                       <ul class="sub">
-                        <div class=" form-group"> <br>
+                        <div class=" form-group"> <br> -->
                         <!--   <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatuses">
+<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatuses">
                             <option value="">-Choose-</option>
                             <option value="1">Active</option>
                             <option value="2">Non Active</option>
@@ -4220,17 +4220,17 @@ aktifkanRadiuss4();
                           <button type="submit" class="btn btn-info btn-block btn-flat" id="viewstatuses" onclick='viewstatuses();'>Search</button>
                         </div>
                      </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="sub-menu">
+<!--                     <li class="sub-menu">
                       <a href="javascript:;" >
                       <i class="fa fa-user"></i>
                         <span>Contact Person</span>
                       </a>
                       <ul class="sub">
-                        <div class=" form-group"> <br>
+                        <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="cp">
+<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="cp">
                             <option value="">-Choose-</option>
                             <option value="1">Available</option>
                             <option value="2">Not Available</option>
@@ -4242,17 +4242,17 @@ aktifkanRadiuss4();
                           <button type="submit" class="btn btn-info btn-block btn-flat" id="cp" onclick='cpes();'>Search</button>
                         </div>
                      </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="sub-menu">
+<!--                     <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-sort"></i>
                         <span>Rating</span>
                       </a>
                       <ul class="sub">
-                        <div class=" form-group"> <br>
+                        <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="rating">
+<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="rating">
                             <option value="">-Choose-</option>
                             <option value="1">Star 1</option>
                             <option value="2">Star 2</option>
@@ -4267,17 +4267,17 @@ aktifkanRadiuss4();
                           <button type="submit" class="btn btn-info btn-block btn-flat" id="rating" onclick='ratinges();'>Search</button>
                         </div>
                      </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="sub-menu">
+<!--                     <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-male"></i>
                         <span>Gender</span>
                       </a>
                       <ul class="sub">
-                        <div class=" form-group"> <br>
+                        <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="genderes">
+<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="genderes">
                             <option value="">-Choose-</option>
                             <option value="l">Male</option>
                             <option value="p">Female</option>
@@ -4290,7 +4290,7 @@ aktifkanRadiuss4();
                           onclick='genderes();'>Search</button>
                         </div>
                      </ul>
-                    </li>
+                    </li> -->
 
                     <li class="sub-menu">
                       <a href="javascript:;" onclick="selectsou()">
