@@ -4207,14 +4207,14 @@ aktifkanRadiuss4();
                       </a>
                       <ul class="sub">
                         <div class=" form-group"> <br> -->
-                          <!-- <label style="color: white;">Sub District</label> -->
+<!--                           <label style="color: white;">Sub District</label>
                           <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatuses">
                             <option value="">-Choose-</option>
                             <option value="1">Active</option>
                             <option value="2">Non Active</option>
                           </select>
                                               
-                        </div>
+                        </div> -->
                         
                         <div class=" form-group">
                           <button type="submit" class="btn btn-info btn-block btn-flat" id="viewstatuses" onclick='viewstatuses();'>Search</button>
