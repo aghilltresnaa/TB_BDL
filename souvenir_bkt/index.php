@@ -4754,7 +4754,7 @@ aktifkanRadiuss4();
                                 </div>
                               </div>         
                         </div> 
-		   	<div class="col-lg-12 ds"  id="recommendation" style="display:none;">
+		   	<div class="col-lg-12 ds"  id="recommendation">
                           <!-- <div class="col-md-12 padding-0" style="display:none;"> -->
                           <!-- <h3 style="font-size:16px">Rute</h3> -->
                           <a class="btn btn-compose">Recommendation</a>
