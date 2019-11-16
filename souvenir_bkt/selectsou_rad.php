@@ -38,7 +38,6 @@ souvenir_gallery ON souvenir.id = souvenir_gallery.id
 detail_product_souvenir ON souvenir.id = detail_product_souvenir.id_souvenir
 WHERE
 detail_product_souvenir.id_product IN ($c)
-GROUP BY id
 HAVING jarak <= $rad
 ORDER BY jarak ASC
 LIMIT 3";
