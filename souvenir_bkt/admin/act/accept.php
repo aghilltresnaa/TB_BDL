@@ -5,7 +5,7 @@ $username = $_GET['username'];
 
 $query = "UPDATE admin set role = 'C' where username = '$username' ";
 
-$update = pg_query($query);
+$update = mysqli_query($conn, $query);
 if ($update){
 	echo "<script>
 	alert ('Data Successfully Added');
