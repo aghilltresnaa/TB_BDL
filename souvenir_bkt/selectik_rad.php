@@ -37,7 +37,6 @@ industry_gallery ON small_industry.id = industry_gallery.id
 detail_product_small_industry ON small_industry.id = detail_product_small_industry.id_small_industry
 WHERE
 detail_product_small_industry.id_product IN ($c)
-GROUP BY id
 HAVING jarak <= $rad
 LIMIT 3";
 
