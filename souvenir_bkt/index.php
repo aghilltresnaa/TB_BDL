@@ -2555,6 +2555,12 @@ function viewsouv()
   $('#hasilcari').empty();
   $('#hasilpencarian').empty();
 
+if(koordinat != null){
+	$("#recommendation").show();
+        $('#recommend1').show();
+        $('#detailrekom').empty();
+}
+
 hapusawal();
   var fas=selectsou.value;
   var arrayLay=[];
@@ -2614,9 +2620,6 @@ hapusawal();
       }});
       }else{
         console.log("woi");
-        $("#recommendation").show();
-        $('#recommend1').show();
-        $('#detailrekom').empty();
         aktifkanRadiuss3();
         var inputradiuss=document.getElementById("inputradiuss_selsou").value * 100;
         console.log(server+'selectsou_rad.php?lay='+arrayLay+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss);
