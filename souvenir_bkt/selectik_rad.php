@@ -26,10 +26,13 @@ small_industry.id,
 			   )
 			 ) AS jarak,
 small_industry.name,
+industry_gallery.gallery_industry as ik_gallery,
 ST_X(ST_CENTROID(small_industry.geom)) AS lng,
 ST_Y(ST_CENTROID(small_industry.geom)) AS lat
 FROM
 small_industry
+JOIN
+industry_gallery ON small_industry.id = industry_gallery.id
 	JOIN
 detail_product_small_industry ON small_industry.id = detail_product_small_industry.id_small_industry
 WHERE
@@ -46,8 +49,14 @@ while($row = mysqli_fetch_array($hasil))
 		//$name=$row['name'];
 		$longitude=$row['lng'];
 		$latitude=$row['lat'];
+		if(($row['ik_gallery']=='-')||($row['ik_gallery']=='')){
+			$foto="foto.jpg";
+		  }
+		  else{
+			$foto=$row['ik_gallery'];
+		  }
 
-		$dataarray[]=array('id'=>$id,'name'=>$name,'longitude'=>$longitude,'latitude'=>$latitude);
+		$dataarray[]=array('id'=>$id,'name'=>$name,'longitude'=>$longitude,'latitude'=>$latitude,'foto'=>$foto);
 	}
 echo json_encode ($dataarray);
 ?>
