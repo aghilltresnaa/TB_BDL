@@ -4757,18 +4757,6 @@ aktifkanRadiuss4();
                                 </div>
                               </div>         
                         </div> 
-		   	<div class="col-lg-12 ds"  id="recommendation" style="display:none;">
-                          <!-- <div class="col-md-12 padding-0" style="display:none;"> -->
-                          <!-- <h3 style="font-size:16px">Rute</h3> -->
-                          <a class="btn btn-compose">Recommendation</a>
-                              <!-- First Action -->
-                              <div class="box-body" style="max-height:557px;overflow:auto;">
-                                <div class="form-group" id="recommend1" >
-
-                                  <table class="table table-bordered" id='detailrekom'></table>
-                                </div>
-                              </div>         
-                        </div> 
 
                       </div>
                     
@@ -4802,6 +4790,19 @@ aktifkanRadiuss4();
         </div> 
         </section>
         </div>
+	
+		<div class="col-sm-4"  id="recommendation" style="display:none;">
+                          <!-- <div class="col-md-12 padding-0" style="display:none;"> -->
+                          <!-- <h3 style="font-size:16px">Rute</h3> -->
+                          <a class="btn btn-compose">Recommendation</a>
+                              <!-- First Action -->
+                              <div class="box-body" style="max-height:557px;overflow:auto;">
+                                <div class="form-group" id="recommend1" >
+
+                                  <table class="table table-bordered" id='detailrekom'></table>
+                                </div>
+                              </div>         
+                        </div>
 
       <div id="nearbyik" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="padding-bottom:5px">
