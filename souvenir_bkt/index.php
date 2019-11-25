@@ -4757,6 +4757,40 @@ aktifkanRadiuss4();
                                 </div>
                               </div>         
                         </div> 
+		   	
+		   	<div class="col-lg-4 ds"  id="selectkulll" style="display:none;">
+			  <!-- <h3 style="font-size:16px">Select Culinary</h3> -->
+			  <a class="btn btn-compose">Select Souvenir</a>
+			<div class="panel box-v3">
+				  <ul class="sub">
+					<div id="forml">
+					<input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $id ?>">
+					  <div class="form-group row col-xs-9" >
+					    <?php
+					      $sql2 = mysqli_query($conn,"select * from product_souvenir WHERE product LIKE '%sanjai%' order by product");
+					      while($dt = mysqli_fetch_array($sql2)){
+						  echo "<div class='checkbox'><label style='color:black'><input name='product_souvenir' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
+						}
+
+					    ?>
+
+
+					     <?php
+					      $sql2 = mysqli_query($conn,"select * from product_small_industry WHERE product LIKE '%baju%' order by product");
+					      while($dt = mysqli_fetch_array($sql2)){
+						  echo "<div class='checkbox'><label style='color:black'><input name='product_small_industry' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
+						}
+
+					    ?>
+
+				      </div>
+				      </div>
+					<div class=" form-group">
+					  <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_kec" onclick='viewsouv()'>Search</button>
+					</div>
+				      </ul>
+				</div> 
+				</div>
 
                       </div>
                     
@@ -4893,39 +4927,7 @@ aktifkanRadiuss4();
               </div>         
         </div> 
 
-        <div class="col-lg-4 ds"  id="selectkulll" style="display:none;">
-          <!-- <h3 style="font-size:16px">Select Culinary</h3> -->
-          <a class="btn btn-compose">Select Souvenir</a>
-        <div class="panel box-v3">
-                  <ul class="sub">
-                        <div id="forml">
-                        <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $id ?>">
-                          <div class="form-group row col-xs-9" >
-                            <?php
-                              $sql2 = mysqli_query($conn,"select * from product_souvenir WHERE product LIKE '%sanjai%' order by product");
-                              while($dt = mysqli_fetch_array($sql2)){
-                                  echo "<div class='checkbox'><label style='color:black'><input name='product_souvenir' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
-                                }
-                              
-                            ?>
-
-
-                             <?php
-                              $sql2 = mysqli_query($conn,"select * from product_small_industry WHERE product LIKE '%baju%' order by product");
-                              while($dt = mysqli_fetch_array($sql2)){
-                                  echo "<div class='checkbox'><label style='color:black'><input name='product_small_industry' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
-                                }
-                              
-                            ?>
-            
-                      </div>
-                      </div>
-                        <div class=" form-group">
-                          <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_kec" onclick='viewsouv()'>Search</button>
-                        </div>
-                      </ul>
-                </div> 
-                </div>
+        
      
       </section>
     </section>
