@@ -4902,7 +4902,7 @@ aktifkanRadiuss4();
                         <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $id ?>">
                           <div class="form-group row col-xs-9" >
                             <?php
-                              $sql2 = mysqli_query($conn,"select * from product_souvenir order by product");
+                              $sql2 = mysqli_query($conn,"select * from product_souvenir WHERE product LIKE '%sanjai%' order by product");
                               while($dt = mysqli_fetch_array($sql2)){
                                   echo "<div class='checkbox'><label style='color:black'><input name='product_souvenir' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
                                 }
@@ -4911,7 +4911,7 @@ aktifkanRadiuss4();
 
 
                              <?php
-                              $sql2 = mysqli_query($conn,"select * from product_small_industry order by product");
+                              $sql2 = mysqli_query($conn,"select * from product_small_industry WHERE product LIKE '%baju%' order by product");
                               while($dt = mysqli_fetch_array($sql2)){
                                   echo "<div class='checkbox'><label style='color:black'><input name='product_small_industry' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
                                 }
