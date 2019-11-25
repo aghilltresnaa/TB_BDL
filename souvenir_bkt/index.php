@@ -4758,7 +4758,7 @@ aktifkanRadiuss4();
                               </div>         
                         </div> 
 		   	
-		   	<div class="col-lg-4 ds"  id="selectkulll" style="display:none;">
+		   	<div class="col-lg-6 ds"  id="selectkulll" style="display:none;">
 			  <!-- <h3 style="font-size:16px">Select Culinary</h3> -->
 			  <a class="btn btn-compose">Select Souvenir</a>
 			<div class="panel box-v3">
