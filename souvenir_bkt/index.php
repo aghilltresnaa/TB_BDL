@@ -38,7 +38,7 @@ require("../connect.php");
 
 <script type="text/javascript">
 
-var server = "http://52.230.23.125/TB_BDL/souvenir_bkt/";
+var server = "http://localhost/souvenir_mysql/souvenir_bkt/";
 var map;
 var markersDua = [];
 var koordinat = 'null'
@@ -1064,7 +1064,7 @@ function detsouxx(id14433){
    clearroute();
    hapusrouteangkot();
    hapusMarkerTerdekat();
-      console.log(server+'detik.php?info='+id14433);
+      console.log('aaa');
       
        $.ajax({ 
       url: server+'detik.php?info='+id14433, data: "", dataType: 'json', success: function(rows)
@@ -2555,12 +2555,6 @@ function viewsouv()
   $('#hasilcari').empty();
   $('#hasilpencarian').empty();
 
-if(koordinat != null){
-	$("#recommendation").show();
-        $('#recommend1').show();
-        $('#detailrekom').empty();
-}
-
 hapusawal();
   var fas=selectsou.value;
   var arrayLay=[];
@@ -2568,15 +2562,15 @@ hapusawal();
     arrayLay.push($("input[name=product_souvenir]:checked")[i].value);
   }
   var jumlah_centang = $("input[name=product_souvenir]:checked").length + $("input[name=product_small_industry]:checked").length;
-  var jumlah_sml = $("input[name=product_small_industry]:checked").length;
+
   console.log(jumlah_centang, koordinat);
   if (jumlah_centang==0){
     alert('Pilih Produk');
   }else{
     if(arrayLay == ''){
       console.log('baba');
-      
-      viewikk(jumlah_sml);
+      var jumlah1 = 0;
+      viewikk(jumlah1);
 
     } else {
       if(koordinat == 'null'){
@@ -2613,17 +2607,16 @@ hapusawal();
                 $('#hasilcari').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
               }
               var jumlah = rows.length;
-              if(jumlah_sml != 0){
-	      viewikk(jumlah_sml);
-	      }
+              viewikk(jumlah);
               // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>");
       }});
       }else{
         console.log("woi");
+        $("#recommendation").show();
         aktifkanRadiuss3();
         var inputradiuss=document.getElementById("inputradiuss_selsou").value * 100;
         console.log(server+'selectsou_rad.php?lay='+arrayLay+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss);
-        $('#detailrekom').append("<thead><th class='centered'>Name</th><th class='centered'>Galeri</th><th class='centered' colspan='3'>Action</th></thead>");
+        // $('#detailrekom').append("<thead><th class='centered'>Name</th><th class='centered'>Galeri</th><th class='centered' colspan='3'>Action</th></thead>");
       $.ajax({ url: server+'selectsou_rad.php?lay='+arrayLay+'&lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+inputradiuss, data: "", dataType: 'json', success: function(rows){
         
         if(rows==null)
@@ -2654,12 +2647,12 @@ hapusawal();
                 map.setCenter(centerBaru);
                 map.setZoom(16);
                 clickMarker(centerBaru, id);
-                $('#detailrekom').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a href='../_foto/"+foto+"'><img style='width:100%' src='../_foto/"+foto+"'></a></td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
+                $('#foto'+i).attr('href','../_foto/'+foto);
+                $('#src'+i).attr('src','../_foto/'+foto);
               }
-	      var jumlah = rows.length;
-              if(jumlah_sml != 0){
-	      viewikk(jumlah_sml);
-	      }
+              var jumlah = rows.length;
+              viewikk(jumlah);
+               
               // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>");
       }});
     }
@@ -2762,6 +2755,9 @@ function viewikk(jml)
               clickMarker(centerBaru, id);
               $('#detailrekom').append("<tr><td>"+nama_tempat_kuliner+"</td><td><a href='../_foto/"+foto+"'><img style='width:100%' src='../_foto/"+foto+"'></a></td><td><a role='button' class='btn btn-success' onclick='detik(\""+id+"\");detikik(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='ikangkot(\""+id+"\")'></a></td></tr>");
             }
+            // jml = jml + rows.length;
+            // alert('hai')
+            // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+jml);
     }});
     }
   }
@@ -4206,15 +4202,15 @@ aktifkanRadiuss4();
                      </ul>
                     </li>
 
-<!--                      <li class="sub-menu">
+                    <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-unlock"></i>
                         <span>Active</span>
                       </a>
                       <ul class="sub">
                         <div class=" form-group"> <br> -->
-                        <!--   <label style="color: white;">Sub District</label> -->
-<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatuses">
+                          <!-- <label style="color: white;">Sub District</label> -->
+                          <!-- <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatuses">
                             <option value="">-Choose-</option>
                             <option value="1">Active</option>
                             <option value="2">Non Active</option>
@@ -4228,7 +4224,7 @@ aktifkanRadiuss4();
                      </ul>
                     </li> -->
 
-<!--                     <li class="sub-menu">
+                    <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                       <i class="fa fa-user"></i>
                         <span>Contact Person</span>
@@ -4236,7 +4232,7 @@ aktifkanRadiuss4();
                       <ul class="sub">
                         <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
-<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="cp">
+                          <!-- <select class="form-control select2" style="width: 100%; height: 70%;" id="cp">
                             <option value="">-Choose-</option>
                             <option value="1">Available</option>
                             <option value="2">Not Available</option>
@@ -4250,7 +4246,7 @@ aktifkanRadiuss4();
                      </ul>
                     </li> -->
 
-<!--                     <li class="sub-menu">
+                    <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-sort"></i>
                         <span>Rating</span>
@@ -4258,7 +4254,7 @@ aktifkanRadiuss4();
                       <ul class="sub">
                         <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
-<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="rating">
+                          <!-- <select class="form-control select2" style="width: 100%; height: 70%;" id="rating">
                             <option value="">-Choose-</option>
                             <option value="1">Star 1</option>
                             <option value="2">Star 2</option>
@@ -4275,7 +4271,7 @@ aktifkanRadiuss4();
                      </ul>
                     </li> -->
 
-<!--                     <li class="sub-menu">
+                    <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                         <i class="fa fa-male"></i>
                         <span>Gender</span>
@@ -4283,7 +4279,7 @@ aktifkanRadiuss4();
                       <ul class="sub">
                         <div class=" form-group"> <br> -->
                           <!-- <label style="color: white;">Sub District</label> -->
-<!--                           <select class="form-control select2" style="width: 100%; height: 70%;" id="genderes">
+                          <!-- <select class="form-control select2" style="width: 100%; height: 70%;" id="genderes">
                             <option value="">-Choose-</option>
                             <option value="l">Male</option>
                             <option value="p">Female</option>
@@ -4370,228 +4366,11 @@ aktifkanRadiuss4();
               </li></ul></li>
               
               <li class="sub-menu">
-                  <a href="javascript:;" >
+                  <a href="http://localhost/souvenir_mysql/souvenir_bkt/rekomendasi.php">
                     <i class="fa fa-eye"></i>
                     <span>Recommendation Souvenir</span>
                   </a>
-                  <ul class="sub">
-                    <li class="sub-menu">
-                  <a href="javascript:;" >
-                    <i class="fa fa-cubes"></i>
-                    <span>Type</span>
-                  </a>
-                  <ul class="sub">
-                  <div class=" form-group" style="color: white;"> <br>
-                          <label>Based On Radius</label><br>
-                          <label for="inputradiuss_type">Radius : </label>
-                          <label  id="nilai_type">0</label> m
-                          <script>
-                            function cekkk1()
-                            {
-                              document.getElementById('nilai_type').innerHTML=document.getElementById('inputradiuss_type').value*100
-                            }
-                          </script>
-                          <input  type="range" onchange="cekkk1();aktifkanRadiuss1()" id="inputradiuss_type" 
-                                  name="inputradiuss_type" data-highlight="true" min="0" max="20" value="0" >
-                  </div>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                        <i class="fa fa-cubes"></i>
-                        <span>Souvenir</span>
-                      </a>
-                      <ul class="sub">
-                        <div class=" form-group"> <br>
-                          <!-- <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="caritipe_rad">
-                            <option value="">-Choose-</option>
-                            <?php
-                              include("connect.php"); 
-                              $caritipe=mysqli_query($conn,"select * from souvenir_type order by name ASC");
-                              while($rowcaristatus = mysqli_fetch_assoc($caritipe))
-                              {
-                                echo"<option value=".$rowcaristatus['id'].">".$rowcaristatus['name']."</option>";
-                              }
-                            ?>
-                          </select>
-                                              
-                        </div>
-                        
-                        <div class=" form-group">
-                          <button type="submit" class="btn btn-info btn-block btn-flat" id="viewtipe" onclick='viewtipe_rad();'>Search</button>
-                        </div>
-                     </ul>
-                </li>
-
-
-                    <li class="sub-menu">
-                      <a href="javascript:;" >
-                        <i class="fa fa-cubes"></i>
-                        <span>Craft</span>
-                      </a>
-                      <ul class="sub">
-                        <div class=" form-group"> <br>
-                          <!-- <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="caritipe2_rad">
-                            <option value="">-Choose-</option>
-                            <?php
-                              include("connect.php"); 
-                              $caritipe2=mysqli_query($conn,"select * from industry_type order by name ASC");
-                              while($rowcaristatus = mysqli_fetch_assoc($caritipe2))
-                              {
-                                echo"<option value=".$rowcaristatus['id'].">".$rowcaristatus['name']."</option>";
-                              }
-                            ?>
-                          </select>
-                                              
-                        </div>
-                        
-                        <div class=" form-group">
-                          <button type="submit" class="btn btn-info btn-block btn-flat" id="viewstipe" onclick='viewtipe2_rad();'>Search</button>
-                        </div>
-                     </ul>
-                    </li>
-                  </ul>
-                  </li>
-
-
-                    <li class="sub-menu">
-                      <a href="javascript:;" >
-                        <i class="fa fa-home"></i>
-                        <span>Status</span>
-                      </a>
-                      <ul class="sub">
-                        <div class=" form-group" style="color: white;"> <br>
-                          <label>Based On Radius</label><br>
-                          <label for="inputradiuss_status">Radius : </label>
-                          <label  id="nilai_status">0</label> m
-                          <script>
-                            function cekkk2()
-                            {
-                              document.getElementById('nilai_status').innerHTML=document.getElementById('inputradiuss_status').value*100
-                            }
-                          </script>
-                          <input  type="range" onchange="cekkk2();aktifkanRadiuss2()" id="inputradiuss_status" 
-                                  name="inputradiuss_status" data-highlight="true" min="0" max="20" value="0" >
-                        </div>
-                          <!-- <label style="color: white;">Sub District</label> -->
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="caristatus_rad">
-                            <option value="">-Choose-</option>
-                            <?php
-                              include("connect.php"); 
-                              $caristatus=mysqli_query($conn,"select * from status order by status ASC");
-                              while($rowcaristatus = mysqli_fetch_assoc($caristatus))
-                              {
-                                echo"<option value=".$rowcaristatus['id'].">".$rowcaristatus['status']."</option>";
-                              }
-                            ?>
-
-                          </select>
-                                              
-                        
-                        <div class=" form-group">
-                          <button type="submit" class="btn btn-info btn-block btn-flat" id="viewstatus_rad" onclick='viewstatus_rad();'>Search</button>
-                        </div>
-                     </ul>
-                    </li>
-
-
-                    <li class="sub-menu">
-                      <a href="javascript:;" onclick="selectsou()">
-                       <i class="fa fa-shopping-cart"></i>
-                       <span>Select Souvenir</span>
-                       </a>
-                       <ul class="sub">
-                       <div class=" form-group" style="color: white;"> <br>
-                          <label>Based On Radius</label><br>
-                          <label for="inputradiuss_selsou">Radius : </label>
-                          <label  id="nilai_selsou">0</label> m
-                          <script>
-                            function cekkk3()
-                            {
-                              document.getElementById('nilai_selsou').innerHTML=document.getElementById('inputradiuss_selsou').value*100
-                            }
-                          </script>
-                          <input  type="range" onchange="cekkk3();aktifkanRadiuss3()" id="inputradiuss_selsou" 
-                                  name="inputradiuss_selsou" data-highlight="true" min="0" max="20" value="0" >
-                        </div>
-                        </ul>
-                    </li>
-
-
-                    <!-- <li class="sub-menu">
-                      <a href="javascript:;" onclick="selectik()">
-                       <i class="fa fa-shopping-cart"></i>
-                       <span>Select Craft</span>
-                       </a>
-                    </li> -->
-
-
-
-                  <li class="sub-menu">
-                  <a href="javascript:;" >
-                    <i class="fa fa-money"></i>
-                    <span>Price</span>
-                  </a>
-                  <ul class="sub">  
-                  <div class=" form-group" style="color: white;"> <br>
-                          <label>Based On Radius</label><br>
-                          <label for="inputradiuss_price">Radius : </label>
-                          <label  id="nilai_price">0</label> m
-                          <script>
-                            function cekkk4()
-                            {
-                              document.getElementById('nilai_price').innerHTML=document.getElementById('inputradiuss_price').value*100
-                            }
-                          </script>
-                          <input  type="range" onchange="cekkk4();aktifkanRadiuss4()" id="inputradiuss_price" 
-                                  name="inputradiuss_price" data-highlight="true" min="0" max="20" value="0" >
-                  </div>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
-                      <i class="fa fa-money"></i>
-                      <span>Souvenir</span>
-                    </a>
-                    <ul class="sub">
-                       <div class=" form-group"> <br>
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="cariprice_rad">
-                            <option name="harga" value="">-Choose-</option>
-                            <option name="harga" value="1"> < Rp 20.000</option>
-                            <option name="harga" value="2">Rp 20.000 - Rp 50.000</option>
-                            <option name="harga" value="3"> > Rp 50.000</option>
-                          </select>
-                        </div>
-                        <div class=" form-group">
-                          <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_kec" onclick='viewprice_rad();'>Search
-                          </button>
-                        </div>
-                    </ul>
-                  </li>
-
-
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
-                      <i class="fa fa-money"></i>
-                      <span>Craft</span>
-                    </a>
-                    <ul class="sub">
-                       <div class=" form-group"> <br>
-                          <select class="form-control select2" style="width: 100%; height: 70%;" id="cariprice2_rad">
-                            <option name="harga" value="">-Choose-</option>
-                            <option name="harga" value="1"> < Rp 100.000</option>
-                            <option name="harga" value="2">Rp 100.000 - Rp 500.000</option>
-                            <option name="harga" value="3"> > Rp 500.000</option>
-                          </select>
-                        </div>
-                        <div class=" form-group">
-                          <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_kec" onclick='viewprice2_rad();'>Search
-                          </button>
-                        </div>
-                    </ul>
-                  </li>
-
-
-                </ul>
-              </li></ul></li>
+              </li>
             
                 
               <!-- sidebar menu end-->
@@ -4606,16 +4385,16 @@ aktifkanRadiuss4();
         <section class="wrapper site-min-height">
           <div class="row mt">
            <div class="col-lg-8 ds">
-            <section class="panel">
-               <header class="panel-heading">
-                <label style="color: black">Google Map With Location List :</label>
-                   <button type="button" onclick="posisisekarang()" class="btn btn-default " data-toggle="tooltip" id="posisinow" title="Posisi Saya" 
-                    style="margin: 15px" style="margin-right: 7px;" ><i class="fa fa-location-arrow" > </i>
-                      </button>
+              <section class="panel">
+                 <header class="panel-heading">
+                  <label style="color: black">Google Map With Location List :</label>
+                     <button type="button" onclick="posisisekarang()" class="btn btn-default " data-toggle="tooltip" id="posisinow" title="Posisi Saya" 
+                      style="margin: 15px" style="margin-right: 7px;" ><i class="fa fa-location-arrow" > </i>
+                        </button>
 
-                       <button type="button" onclick="lokasimanual()" class="btn btn-default"  data-toggle="tooltip" id="posmanual" title="Posisi Manual" 
-                              style="margin-right: 7px;"><i class="fa fa-map-marker" ></i>
-                      </button>
+                        <button type="button" onclick="lokasimanual()" class="btn btn-default"  data-toggle="tooltip" id="posmanual" title="Posisi Manual" 
+                               style="margin-right: 7px;"><i class="fa fa-map-marker" ></i>
+                        </button>
                                             
                        <!-- <button type="button" onclick="viewsou()" class="btn btn-default" data-toggle="tooltip" title="Melihat Semua Souvenir" 
                                style="margin: 7px" style="margin-right: 7px;"><i class="fa fa-bullseye"></i>
@@ -4623,16 +4402,16 @@ aktifkanRadiuss4();
 
                        <!-- <button type="button" onclick="clean()" class="btn btn-default" data-toggle="tooltip" title="Refresh" style="margin-right: 7px;"><i class="fa fa-refresh"></i>
                        </button> -->
-                       <label id="tombol">
-                       <a type="button" onclick="legenda()" id="showlegenda" class="btn btn-default" data-toggle="tooltip" title="Legenda" style="margin-right: 7px;"><i class="fa fa-eye"></i>
-                       </a>
-                       </label>
-                  </header>
+                        <label id="tombol">
+                        <a type="button" onclick="legenda()" id="showlegenda" class="btn btn-default" data-toggle="tooltip" title="Legenda" style="margin-right: 7px;"><i class="fa fa-eye"></i>
+                        </a>
+                        </label>
+                    </header>
                 <!-- First Action -->
-                      <div class="panel-body">
-                          <div id="map" style="width:100%;height:400px; z-index:50"></div>
-                      </div>
-            </section>
+                        <div class="panel-body">
+                            <div id="map" style="width:100%;height:400px; z-index:50"></div>
+                        </div>
+              </section>
            
               
                       <!--custom chart end-->
@@ -4757,40 +4536,6 @@ aktifkanRadiuss4();
                                 </div>
                               </div>         
                         </div> 
-		   	
-		   	<div class="col-lg-6 ds"  id="selectkulll" style="display:none;">
-			  <!-- <h3 style="font-size:16px">Select Culinary</h3> -->
-			  <a class="btn btn-compose">Select Souvenir</a>
-			<div class="panel box-v3">
-				  <ul class="sub">
-					<div id="forml">
-					<input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $id ?>">
-					  <div class="form-group row col-xs-9" >
-					    <?php
-					      $sql2 = mysqli_query($conn,"select * from product_souvenir WHERE product LIKE '%sanjai%' order by product");
-					      while($dt = mysqli_fetch_array($sql2)){
-						  echo "<div class='checkbox'><label style='color:black'><input name='product_souvenir' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
-						}
-
-					    ?>
-
-
-					     <?php
-					      $sql2 = mysqli_query($conn,"select * from product_small_industry WHERE product LIKE '%baju%' order by product");
-					      while($dt = mysqli_fetch_array($sql2)){
-						  echo "<div class='checkbox'><label style='color:black'><input name='product_small_industry' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
-						}
-
-					    ?>
-
-				      </div>
-				      </div>
-					<div class=" form-group">
-					  <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_kec" onclick='viewsouv()'>Search</button>
-					</div>
-				      </ul>
-				</div> 
-				</div>
 
                       </div>
                     
@@ -4824,19 +4569,29 @@ aktifkanRadiuss4();
         </div> 
         </section>
         </div>
-	
-		<div class="col-sm-4"  id="recommendation" style="display:none;">
-                          <!-- <div class="col-md-12 padding-0" style="display:none;"> -->
-                          <!-- <h3 style="font-size:16px">Rute</h3> -->
-                          <a class="btn btn-compose">Recommendation</a>
-                              <!-- First Action -->
-                              <div class="box-body" style="max-height:557px;overflow:auto;">
-                                <div class="form-group" id="recommend1" >
 
-                                  <table class="table table-bordered" id='detailrekom'></table>
-                                </div>
-                              </div>         
+        <div class="col-sm-4"  id="recommendation" style="display:none;">
+                <div class="row">
+                  <div class="col-sm-12"> <!-- gallery -->
+                    <section class="panel">
+                        <div class="panel-body">
+                            <a class="btn btn-compose">Recommendation</a>
+                            <div class="content" style="text-align:center;">
+                            <div class="html5gallery" style="max-height:700px; overflow:auto;" data-skin="horizontal" data-width="350" data-height="250" data-resizemode="fit">  
+                            <a href="../_foto/samek.JPG"><img src="../_foto/samek.JPG"></a>
+                            <a href="../_foto/siku.JPG"><img src="../_foto/siku.JPG"></a>
+                            <a href="../_foto/mang.JPG"><img src="../_foto/mang.JPG"></a>
+                            <a id='foto0' ><img id='src0' ></a>
+                            <a id='foto1' ><img id='src1' ></a>
+                            <a id='foto2' ><img id='src2' ></a>
+                          </div>
+                            </div>
                         </div>
+                    </section>
+                    
+                  </div>
+                  </div>
+                </div>
 
       <div id="nearbyik" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="padding-bottom:5px">
@@ -4927,14 +4682,49 @@ aktifkanRadiuss4();
               </div>         
         </div> 
 
-        
+        <div class="col-lg-4 ds"  id="selectkulll" style="display:none;">
+          <!-- <h3 style="font-size:16px">Select Culinary</h3> -->
+          <a class="btn btn-compose">Select Souvenir</a>
+        <div class="panel box-v3">
+                  <ul class="sub">
+                        <div id="forml">
+                        <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $id ?>">
+                          <div class="form-group row col-xs-9" >
+                            <?php
+                              //$sql2 = mysqli_query($conn,"select * from product_souvenir WHERE product LIKE '%Sanjai%' OR product LIKE '%Kaos%' order by product");
+                              $sql2 = mysqli_query($conn,"select * from product_souvenir order by product");
+                              while($dt = mysqli_fetch_array($sql2)){
+                                  echo "<div class='checkbox'><label style='color:black'><input name='product_souvenir' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
+                                }
+                              
+                            ?>
+
+
+                             <?php
+                              //$sql2 = mysqli_query($conn,"select * from product_small_industry WHERE product LIKE '%Baju%' order by product");
+                              $sql2 = mysqli_query($conn,"select * from product_small_industry order by product");
+                              while($dt = mysqli_fetch_array($sql2)){
+                                  echo "<div class='checkbox'><label style='color:black'><input name='product_small_industry' value=\"$dt[id]\" type='checkbox' style='width:25px'>$dt[product]</label></div>";
+                                }
+                              
+                            ?>
+            
+                      </div>
+                      </div>
+                        <div class=" form-group">
+                          <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_kec" onclick='viewsouv()'>Search</button>
+                        </div>
+                      </ul>
+                </div> 
+                </div>
      
       </section>
     </section>
   
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="html5gallery/html5gallery.js"></script>
+    <!-- <script src="assets/js/jquery-1.8.3.min.js"></script> -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
@@ -4946,6 +4736,7 @@ aktifkanRadiuss4();
     <script src="assets/js/common-scripts.js"></script>
     <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+    <script src="assets/js/advanced-form-components.js"></script>  
 
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
