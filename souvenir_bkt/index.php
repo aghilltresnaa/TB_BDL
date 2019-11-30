@@ -4366,7 +4366,7 @@ aktifkanRadiuss4();
               </li></ul></li>
               
               <li class="sub-menu">
-                  <a href="http://localhost/souvenir_mysql/souvenir_bkt/rekomendasi.php">
+                  <a href="http://http://52.230.23.125/TB_BDL/souvenir_bkt/rekomendasi.php">
                     <i class="fa fa-eye"></i>
                     <span>Recommendation Souvenir</span>
                   </a>
