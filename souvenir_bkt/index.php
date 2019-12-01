@@ -4569,7 +4569,29 @@ aktifkanRadiuss4();
         </div> 
         </section>
         </div>
+                <div  class="col-sm-4">  
+                  <div class="row">                   
+                      <div class="col-md-12 col-sm-12 mb">
+                        <div class="white-panel pns" style="height: 310px">
+                          <header class="panel-heading" style=" width: 100%"  >
+                            <label class="btn btn-compose" id="judul_table" style="margin-bottom: 0px">Gallery Recommendation
+                            </label>
+                          </header>
 
+                           <div class="malasngoding-slider" id="gallery1">
+                            <div class="isi-slider">
+                              <a href="#" onclick="gallery('SO012')"><img src="../_foto/cenbor.jpg"></a>
+                              <a href="#" onclick="gallery('SO004')"><img src="../_foto/1.umi.jpg"></a>
+                              <a href="#" onclick="gallery('SO008')"><img src="../_foto/sanin.jpg"></a>
+                              <a href="#" onclick="gallery('SO031')"><img src="../_foto/tangk.jpg"></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>                
+                  </div>
+                </div>
+		
+		
         <div class="col-sm-4"  id="recommendation" style="display:none;">
                 <div class="row">
                   <div class="col-sm-12"> <!-- gallery -->
