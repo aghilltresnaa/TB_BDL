@@ -4590,8 +4590,8 @@ aktifkanRadiuss4();
                       </div>                
                   </div>
                 </div>
-		
-		
+
+
         <div class="col-sm-4"  id="recommendation" style="display:none;">
                 <div class="row">
                   <div class="col-sm-12"> <!-- gallery -->
@@ -4613,9 +4613,7 @@ aktifkanRadiuss4();
                     
                   </div>
                   </div>
-                </div>
-
-      <div id="nearbyik" class="col-md-4 col-sm-4 mb" style="display:none">
+                </div>      <div id="nearbyik" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="padding-bottom:5px">
                            <div class="white-header" style="height:40px;margin-bottom:0px;background:white;color:black">
                              <!-- <h4><u><b>Object Arround</b></u></h4> -->
