@@ -4642,9 +4642,9 @@ aktifkanRadiuss4();
 
                            <div class="malasngoding-slider" id="gallery1">
                             <div class="isi-slider">
+                              <a href="#" onclick="gallery('SO008')"><img src="../_foto/sanin.jpg"></a>
                               <a href="#" onclick="gallery('SO030')"><img src="../_foto/1.kap1.jpg"></a>
                               <a href="#" onclick="gallery('SO004')"><img src="../_foto/1.umi.jpg"></a>
-                              <a href="#" onclick="gallery('SO008')"><img src="../_foto/sanin.jpg"></a>
                               <a href="#" onclick="gallery('SO031')"><img src="../_foto/tangk.jpg"></a>
                             </div>
                           </div>
