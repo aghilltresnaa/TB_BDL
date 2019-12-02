@@ -24,6 +24,8 @@ require("../connect.php");
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
+    <link rel="stylesheet" type="text/css" href="assets/css/rekom.css">
+
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -813,13 +815,67 @@ function tampilrute(id_angkot,  latitude, longitude, route_color){
         }
 
 
-//Membuat Fungsi Menampilkan Seluruh Kuliner 
+//Membuat Fungsi Menampilkan Seluruh Souvenir 
 function viewsou()
 {
   hapusawal();
   $.ajax
   ({ 
     url: server+'viewsou.php', data: "", dataType: 'json', success: function(rows) 
+    { 
+      if(rows==null)
+      {
+        alert('Data Did Not Exist!');
+      }
+      else
+      {
+        $('#hasilcari').append("<thead><th class='centered'>Name</th><th class='centered' colspan='3'>Action</th></thead>");
+        console.log("rownya");
+        console.log(rows);
+        for (var i in rows) 
+        { 
+          var row = rows[i];
+          var id = row.id;
+          var name = row.name;
+          var address=row.address;
+          var lat=row.lat;
+          var lon = row.lng;
+          var tabel = row.tabel;
+          console.log(name);
+          centerBaru = new google.maps.LatLng(lat, lon);
+          map.setCenter(centerBaru);
+          map.setZoom(13); 
+          clickMarker(centerBaru, id); 
+          // var marker = new google.maps.Marker
+          // ({
+          //   position: centerBaru,              
+          //   icon:'assets/img/souv.png',
+          //   animation: google.maps.Animation.DROP,
+          //   map: map
+          // });
+          // markersDua.push(marker);
+          map.setCenter(centerBaru);
+          if(tabel == 'sou'){
+           $('#hasilcari').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success' onclick='detsou(\""+id+"\");detsousou(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='souangkot(\""+id+"\")'></a></td></tr>");
+            
+          } else {
+           $('#hasilcari').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success' onclick='detsouxx(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='ikangkot(\""+id+"\")'></a></td></tr>");
+            
+          }
+
+        }
+      } 
+      // $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
+    }
+  });           
+}
+
+function gallery()
+{
+  hapusawal();
+  $.ajax
+  ({ 
+    url: server+'rekom.php', data: "", dataType: 'json', success: function(rows) 
     { 
       if(rows==null)
       {
@@ -1272,6 +1328,11 @@ function hapusrouteangkot()
 function gallery(azz){    
       console.log(azz);
     window.open(server+'gallery.php?idgallery='+azz);    
+   }
+
+   function gallery1(a){    
+      console.log(a);
+    window.open(server+'gallery.php?idgallery='+a);    
    }
 
 
@@ -4365,13 +4426,12 @@ aktifkanRadiuss4();
                 </ul>
               </li></ul></li>
               
-              <li class="sub-menu">
-                  <a href="http://52.230.23.125/TB_BDL/souvenir_bkt/rekomendasi.php">
+              <!-- <li class="sub-menu">
+                  <a href="http://localhost/souvenir_mysql/souvenir_bkt/rekomendasi.php">
                     <i class="fa fa-eye"></i>
                     <span>Recommendation Souvenir</span>
                   </a>
-              </li>
-            
+              </li> -->
                 
               <!-- sidebar menu end-->
           </div>
@@ -4543,6 +4603,8 @@ aktifkanRadiuss4();
 					
 
       <!-- </div>/col-lg-9 END SECTION MIDDLE -->
+ 
+
                   
                   
                   
@@ -4613,7 +4675,9 @@ aktifkanRadiuss4();
                     
                   </div>
                   </div>
-                </div>      <div id="nearbyik" class="col-md-4 col-sm-4 mb" style="display:none">
+                </div>
+
+      <div id="nearbyik" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="padding-bottom:5px">
                            <div class="white-header" style="height:40px;margin-bottom:0px;background:white;color:black">
                              <!-- <h4><u><b>Object Arround</b></u></h4> -->
